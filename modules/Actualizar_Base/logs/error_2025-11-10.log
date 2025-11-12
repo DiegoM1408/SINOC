@@ -1,0 +1,4 @@
+[2025-11-10 03:38:36] ERROR: Base de datos no válida o no seleccionada.
+[2025-11-10 03:38:39] ERROR: Base de datos no válida o no seleccionada.
+[2025-11-10 03:50:28] ERROR: Solo se permiten archivos CSV. Tipo detectado: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+[2025-11-10 03:58:09] ERROR: El script de importación falló con código: 1

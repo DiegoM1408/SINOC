@@ -1,0 +1,847 @@
+:root {
+    --primary-color: #E10000; /* Rojo principal de Claro */
+    --secondary-color: #CC0000; /* Rojo oscuro de Claro */
+    --accent-color: #FF2B2B;   /* Rojo más brillante para acentos */
+    --black: #000000;
+    --white: #ffffff;
+    --gray: #efefef;
+    --gray-2: #757575;
+    --dark-gray: #333333;      /* Gris oscuro para textos */
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600&display=swap');
+
+* {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100vh;
+    overflow: hidden;
+}
+
+.container {
+    position: relative;
+    min-height: 100vh;
+    overflow: hidden;
+    display: flex;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    height: 100vh;
+}
+
+.col {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Sección izquierda - Welcome */
+.col.left-panel {
+    background: linear-gradient(-45deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    color: var(--white);
+    flex-direction: column;
+    text-align: center;
+    padding: 2rem;
+    z-index: 2;
+    position: relative;
+}
+
+.col.left-panel::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100" opacity="0.1"><text x="50%" y="50%" font-size="60" text-anchor="middle" dominant-baseline="middle" fill="white">CLARO</text></svg>');
+    background-size: 200px;
+    opacity: 0.1;
+    z-index: -1;
+}
+
+.welcome-content {
+    max-width: 80%;
+}
+
+.welcome-content h2 {
+    font-size: 3.5rem;
+    font-weight: 600; /* Cambiado a 600 para que coincida */
+    margin-bottom: 1.5rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    font-family: 'Poppins', sans-serif; /* Aseguramos misma fuente */
+}
+
+.welcome-content p {
+    font-size: 1.6rem; /* Aumentado de 1.2rem a 1.6rem */
+    font-weight: 500;
+    font-family: 'Poppins', sans-serif; /* Aseguramos misma fuente */
+    margin-top: 1rem;
+}
+
+/* Logo Claro estilo */
+.claro-logo {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 2rem;
+    color: var(--white);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+    display: inline-block;
+}
+
+.claro-logo::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    height: 3px;
+    background: var(--white);
+}
+
+/* Estilo para la imagen del logo */
+.claro-logo-img {
+    max-width: 180px;
+    height: auto;
+    margin-bottom: 2rem;
+}
+
+/* Sección derecha - Formulario */
+.col.right-panel {
+    background-color: var(--white);
+    z-index: 3;
+}
+
+.form-wrapper {
+    width: 100%;
+    max-width: 28rem;
+    padding: 2rem;
+}
+
+.form {
+    padding: 2rem;
+    background-color: var(--white);
+    border-radius: 1rem;
+    width: 100%;
+    box-shadow: 0 8px 25px rgba(225, 0, 0, 0.15);
+    border: 1px solid rgba(225, 0, 0, 0.1);
+}
+
+.form-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.form-header h2 {
+    color: var(--primary-color);
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.form-header p {
+    color: var(--gray-2);
+    font-size: 0.9rem;
+}
+
+.input-group {
+    position: relative;
+    width: 100%;
+    margin: 1.2rem 0;
+}
+
+.input-group i {
+    position: absolute;
+    top: 50%;
+    left: 1rem;
+    transform: translateY(-50%);
+    font-size: 1.4rem;
+    color: var(--gray-2);
+    z-index: 2;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 1rem 3rem;
+    font-size: 1rem;
+    background-color: var(--gray);
+    border-radius: 8px;
+    border: 2px solid var(--gray);
+    outline: none;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 1;
+}
+
+.input-group input:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(225, 0, 0, 0.1);
+    background-color: var(--white);
+}
+
+.form button {
+    cursor: pointer;
+    width: 100%;
+    padding: 1rem 0;
+    border-radius: 8px;
+    border: none;
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    color: var(--white);
+    font-size: 1.1rem;
+    font-weight: 600;
+    outline: none;
+    transition: all 0.3s ease;
+    margin-top: 1rem;
+}
+
+.form button:hover {
+    background: linear-gradient(135deg, var(--secondary-color) 0%, var(--primary-color) 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(225, 0, 0, 0.3);
+}
+
+.form button:active {
+    transform: translateY(0);
+}
+
+.form p {
+    margin: 1.5rem 0;
+    font-size: 0.9rem;
+    text-align: center;
+    color: var(--dark-gray);
+}
+
+.pointer {
+    cursor: pointer;
+    color: var(--primary-color);
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.pointer:hover {
+    color: var(--secondary-color);
+    text-decoration: underline;
+}
+
+/* Responsive */
+@media only screen and (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+    
+    .col {
+        width: 100%;
+        height: 50vh;
+    }
+    
+    .welcome-content h2 {
+        font-size: 2.5rem;
+    }
+    
+    .welcome-content p {
+        font-size: 1.3rem;
+    }
+    
+    .form-wrapper {
+        padding: 1.5rem;
+    }
+    
+    .form {
+        padding: 1.5rem;
+    }
+    
+    .claro-logo {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+    }
+    
+    .claro-logo-img {
+        max-width: 140px;
+        margin-bottom: 1.5rem;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .welcome-content h2 {
+        font-size: 2rem;
+    }
+    
+    .welcome-content p {
+        font-size: 1.1rem;
+    }
+    
+    .claro-logo-img {
+        max-width: 120px;
+    }
+}
+
+.error-message {
+    color: var(--primary-color);
+    text-align: center;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    padding: 0.5rem;
+    background-color: rgba(225, 0, 0, 0.1);
+    border-radius: 5px;
+    border-left: 4px solid var(--primary-color);
+}
+
+.success-message {
+    color: #28a745;
+    text-align: center;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    padding: 0.5rem;
+    background-color: rgba(40, 167, 69, 0.1);
+    border-radius: 5px;
+    border-left: 4px solid #28a745;
+}
+
+/* Efectos adicionales para el panel izquierdo */
+.welcome-content {
+    animation: fadeInUp 1s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 🌙 Modo oscuro */
+body.dark-mode {
+    --bg-light: #121212;
+    --card-bg: #1e1e1e;
+    --text-dark: #eaeaea;
+    --text-light: #ffffff;
+    --text-gray: #b3b3b3;
+    --border-color: #333333;
+    --sidebar-bg: #1f1f1f;
+    --sidebar-hover: #2a2a2a;
+}
+
+#theme-toggle {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    margin-left: 1rem;
+    transition: transform 0.2s ease;
+    color: var(--text-dark);
+}
+#theme-toggle:hover {
+    transform: scale(1.2);
+}
+
+/* =======================
+   Auditoría — Upgrade Pack
+   (solo estilos, no cambia HTML/PHP)
+   ======================= */
+
+/* 1) Contenedor de tarjetas de tablas */
+.tables-container,
+.priority-tables,
+.content-area .audit-table-card {
+    display: block;
+}
+
+/* 2) Tarjetas que envuelven las tablas */
+.audit-table-card,
+.priority-table-full {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 14px;
+    box-shadow: 0 6px 20px rgba(0,0,0,.06);
+    padding: 1rem 1rem 0.75rem 1rem;
+    margin: 1.25rem 0;
+}
+
+/* asegura que la última tabla tenga el MISMO espacio que las demás */
+.tables-container > .audit-table-card:last-child,
+.content-area > .audit-table-card:last-child,
+.priority-tables > .priority-table-full:last-child {
+    margin-bottom: 1.25rem !important;
+}
+
+/* 3) Encabezados (h3) de las tarjetas de tablas */
+.audit-table-card > h3,
+.priority-table-full > h3 {
+    font-family: 'Poppins', system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, 'Noto Sans', sans-serif;
+    font-weight: 800;
+    letter-spacing: .4px;
+    text-transform: uppercase;
+    color: var(--text-dark);
+    margin: 0 0 .85rem 0;
+    line-height: 1.1;
+    position: relative;
+    padding: .35rem .5rem .35rem 1rem;
+    border-radius: 10px;
+    background:
+        linear-gradient(90deg, rgba(225,0,0,.12), rgba(204,0,0,.06)) padding-box,
+        linear-gradient(90deg, var(--primary-color), transparent 60%) border-box;
+    border: 1px solid transparent;
+}
+
+/* franja decorativa al lado izquierdo del h3 */
+.audit-table-card > h3::before,
+.priority-table-full > h3::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 8px;
+    bottom: 8px;
+    width: 6px;
+    border-radius: 6px;
+    background: linear-gradient(180deg, var(--primary-color), var(--secondary-color));
+    opacity: .9;
+}
+
+/* badge opcional dentro del h3, si existiera */
+.audit-table-card > h3 .badge,
+.priority-table-full > h3 .badge {
+    display: inline-block;
+    margin-left: .6rem;
+    font-size: .72rem;
+    font-weight: 700;
+    padding: .22rem .55rem;
+    border-radius: 999px;
+    background: rgba(225,0,0,.10);
+    color: var(--primary-color);
+    vertical-align: middle;
+}
+
+/* 4) Wrapper para scroll y cabecera sticky */
+.table-responsive {
+    width: 100%;
+    overflow: auto;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    background: var(--card-bg);
+    box-shadow: inset 0 1px 0 rgba(0,0,0,.02);
+}
+
+/* 5) Tabla base */
+table.data-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    font-size: 0.92rem;
+    color: var(--text-dark);
+}
+
+/* Cabecera sticky + estilo */
+table.data-table thead th {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    text-align: left;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    font-weight: 800;
+    font-size: .78rem;
+    background:
+        linear-gradient(180deg, rgba(0,0,0,.02), rgba(0,0,0,.00)),
+        linear-gradient(90deg, rgba(225,0,0,.10), rgba(225,0,0,0));
+    color: var(--text-dark);
+    padding: .85rem .9rem;
+    border-bottom: 1px solid var(--border-color);
+    white-space: nowrap;
+}
+
+/* Celdas */
+table.data-table tbody td {
+    padding: .75rem .9rem;
+    vertical-align: middle;
+    border-bottom: 1px solid var(--border-color);
+}
+
+/* Zebra striping */
+table.data-table tbody tr:nth-child(even) td {
+    background: rgba(0,0,0,.015);
+}
+
+/* Hover con acento */
+table.data-table tbody tr:hover td {
+    background: rgba(225,0,0,.05);
+}
+
+/* Redondeo en las esquinas de la tabla */
+table.data-table thead th:first-child { border-top-left-radius: 10px; }
+table.data-table thead th:last-child  { border-top-right-radius: 10px; }
+
+/* Píldoras para chips/estados si existen */
+table.data-table .chip,
+table.data-table .estado,
+table.data-table .pill {
+    display: inline-block;
+    padding: .2rem .55rem;
+    border-radius: 999px;
+    font-size: .75rem;
+    font-weight: 700;
+    background: rgba(52, 152, 219, .12);
+    color: #3498db;
+    border: 1px solid rgba(52, 152, 219, .25);
+}
+
+table.data-table .pill-danger { background: rgba(231,76,60,.10); color: #e74c3c; border-color: rgba(231,76,60,.25); }
+table.data-table .pill-warning { background: rgba(243,156,18,.10); color: #f39c12; border-color: rgba(243,156,18,.25); }
+table.data-table .pill-success { background: rgba(39,174,96,.10); color: #27ae60; border-color: rgba(39,174,96,.25); }
+
+/* 6) Botones dentro de celdas (si existen) */
+table.data-table a.btn, table.data-table button.btn {
+    font-size: .78rem;
+    padding: .35rem .6rem;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    background: var(--card-bg);
+    color: var(--text-dark);
+    transition: transform .06s ease, background .2s ease;
+}
+table.data-table a.btn:hover, table.data-table button.btn:hover {
+    background: rgba(225,0,0,.06);
+    transform: translateY(-1px);
+}
+
+/* 7) Responsivo para columnas muy largas */
+@media (max-width: 1280px) {
+    table.data-table thead th,
+    table.data-table tbody td {
+        white-space: nowrap;
+    }
+}
+
+/* 8) Modo oscuro */
+body.dark-mode .audit-table-card,
+body.dark-mode .priority-table-full {
+    border-color: var(--border-color);
+    box-shadow: 0 6px 20px rgba(0,0,0,.35);
+}
+
+body.dark-mode table.data-table thead th {
+    background:
+        linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.00)),
+        linear-gradient(90deg, rgba(225,0,0,.18), rgba(225,0,0,0));
+    color: var(--text-light);
+    border-bottom-color: var(--border-color);
+}
+
+body.dark-mode table.data-table tbody td {
+    color: var(--text-light);
+    border-bottom-color: var(--border-color);
+}
+
+body.dark-mode table.data-table tbody tr:nth-child(even) td {
+    background: rgba(255,255,255,.02);
+}
+
+body.dark-mode table.data-table tbody tr:hover td {
+    background: rgba(225,0,0,.12);
+}
+
+/* 9) Animación sutil al cargar */
+.audit-table-card,
+.priority-table-full,
+.table-responsive {
+    animation: cardPop .28s ease-out;
+}
+@keyframes cardPop {
+    from { transform: translateY(6px); opacity: .0; }
+    to   { transform: translateY(0);   opacity: 1; }
+}
+
+/* Logo NTT DATA en panel izquierdo */
+.ntt-logo {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 10;
+    width: 100%;
+    max-width: 280px; /* Controlamos el ancho máximo */
+}
+
+.ntt-logo-img {
+    width: 100%;
+    height: auto;
+    max-height: 85px; /* Controlamos la altura máxima manteniendo proporción */
+    object-fit: contain;
+    opacity: 0.9;
+    filter: brightness(0) invert(1); /* Hacemos el logo blanco para contrastar con fondo rojo */
+}
+
+/* Texto "Desarrollado por" */
+.developed-by {
+    font-size: 0.9rem !important;
+    margin-top: 1.5rem !important;
+    opacity: 0.8;
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.9) !important;
+}
+
+/* Responsive para el logo NTT */
+@media only screen and (max-width: 768px) {
+    .ntt-logo {
+        top: 15px;
+        left: 15px;
+        max-width: 200px;
+    }
+    
+    .ntt-logo-img {
+        max-height: 60px;
+    }
+    
+    .developed-by {
+        font-size: 0.8rem !important;
+        margin-top: 1rem !important;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .ntt-logo {
+        top: 10px;
+        left: 10px;
+        max-width: 150px;
+    }
+    
+    .ntt-logo-img {
+        max-height: 45px;
+    }
+}
+
+.badge-pdr-warning {
+    background-color: #fef3c7;
+    color: #d97706;
+}
+
+body.dark-mode .badge-pdr-warning {
+    background-color: #78350f;
+    color: #fcd34d;
+}
+
+/* Estilos para tablas lado a lado */
+.tables-side-by-side {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.half-width {
+    flex: 1;
+    min-width: 48%;
+}
+
+.section-header {
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+.section-header h2 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    border-bottom: 3px solid var(--primary-color);
+    padding-bottom: 0.5rem;
+}
+
+/* Responsive para móviles */
+@media (max-width: 1024px) {
+    .tables-side-by-side {
+        flex-direction: column;
+    }
+    
+    .half-width {
+        min-width: 100%;
+    }
+}
+
+@media (max-width: 1024px) {
+    .table-container[style*="min-width: 48%"] {
+        min-width: 100% !important;
+    }
+}
+
+.nav-item.dropdown .dropdown-toggle:hover {
+    background: var(--primary-color) !important;
+}
+
+.nav-item.dropdown.active .dropdown-toggle {
+    background: var(--primary-color) !important;
+}
+
+.mintic7k i.bx-network-chart {
+    margin-right: 4px !important;
+}
+
+/* ====== SOLUCIÓN DEFINITIVA ESPACIADO ICONO-TEXTO ====== */
+.sidebar-nav .nav-item i {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: auto !important;
+    min-width: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+/* Estructura principal de filas de navegación */
+.nav-item .nav-row {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    width: 100%;
+    text-align: left !important;
+    gap: 0 !important;
+}
+
+/* Grupo izquierdo: icono + texto */
+.nav-item .nav-row .nav-left {
+    display: flex !important;
+    align-items: center !important;
+    flex: 1;
+    gap: 0 !important;
+}
+
+/* ESPACIO ESPECÍFICO entre icono y texto - 12px de separación */
+.nav-item .nav-row .nav-left .nav-icon {
+    margin-right: 12px !important;
+    font-size: 1.3rem !important;
+    width: 24px !important;
+    height: 24px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex-shrink: 0;
+}
+
+/* Texto del menú */
+.nav-item .nav-row .nav-left .nav-label {
+    margin: 0 !important;
+    padding: 0 !important;
+    letter-spacing: 0 !important;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    flex: 1;
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+/* Flecha del dropdown */
+.nav-item .nav-row .dropdown-arrow {
+    margin-left: auto !important;
+    transition: transform .2s ease;
+    font-size: 1.2rem !important;
+    flex-shrink: 0;
+}
+
+/* Rotación al abrir */
+.nav-item.dropdown.active .nav-row .dropdown-arrow {
+    transform: rotate(180deg);
+}
+
+/* Estilos para menú desplegable - CORREGIDOS */
+.nav-item.dropdown {
+    position: relative;
+}
+
+.dropdown-menu {
+    list-style: none;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    background: var(--sidebar-hover);
+    margin: 0 0.5rem;
+    border-radius: 0 0 8px 8px;
+}
+
+.nav-item.dropdown.active .dropdown-menu {
+    max-height: 300px;
+}
+
+.dropdown-menu li {
+    margin: 0;
+}
+
+.dropdown-menu a {
+    display: flex !important;
+    align-items: center;
+    padding: 0.8rem 1.5rem !important;
+    font-size: 0.9rem;
+    border-radius: 0;
+    border-left: 3px solid transparent;
+    background: transparent !important;
+    text-decoration: none;
+}
+
+/* Aplicar la misma estructura de espaciado en los submenús */
+.dropdown-menu a .nav-left {
+    display: flex !important;
+    align-items: center !important;
+    gap: 0 !important;
+}
+
+.dropdown-menu a .nav-icon {
+    margin-right: 12px !important;
+    font-size: 1.2rem !important;
+    width: 20px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex-shrink: 0;
+}
+
+.dropdown-menu a .nav-label {
+    margin: 0 !important;
+    padding: 0 !important;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.dropdown-menu a:hover {
+    background: var(--primary-color) !important;
+    border-left-color: transparent;
+}
+
+/* Asegurar que no haya fondo rojo permanente en dropdowns */
+.nav-item.dropdown.active .dropdown-toggle {
+    background: transparent !important;
+}
+
+.nav-item.dropdown .dropdown-toggle:hover {
+    background: var(--primary-color) !important;
+}
+
+/* Efecto hover para todos los elementos del menú */
+.nav-item a:hover {
+    background: var(--primary-color) !important;
+}
+
+.nav-item.active a {
+    background: var(--primary-color);
+}
+
+/* Enlaces deshabilitados */
+.nav-item .disabled-link {
+    opacity: 0.6;
+    cursor: not-allowed !important;
+    pointer-events: none;
+}
