@@ -1082,7 +1082,7 @@ if (isset($conn_ic)) {
                         </div>
                     </div>
 
-                    <!-- Tabla modificada: IDs en Descripción No Encontrados (sin filtros) -->
+                    <!-- Tabla modificada: IDs en Descripción No Encontrados -->
                     <div class="audit-card" style="grid-column: 1 / -1;">
                         <div class="card-header">
                             <span class="card-title">
@@ -1279,8 +1279,8 @@ if (isset($conn_ic)) {
                     headers: ['Ticket', 'ID Beneficiario', 'Cód. Servicio', 'Observación']
                 },
                 'comparacion_id_titulo': {
-                    columns: ['id_incidente', 'titulo', 'sem_id_beneficiario', 'id_en_titulo', 'estado_comparacion'],
-                    headers: ['ID Incidente', 'Título', 'ID Beneficiario', 'ID en Título', 'Estado']
+                    columns: ['id_incidente', 'titulo', 'sem_id_beneficiario', 'id_en_titulo'],
+                    headers: ['ID Incidente', 'Título', 'ID Beneficiario', 'ID en Título']
                 },
                 'ids_descripcion_no_encontrados': {
                     columns: ['id_beneficiario', 'descripcion', 'id_no_encontrado', 'id_incidente'],

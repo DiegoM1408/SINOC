@@ -220,10 +220,10 @@ try {
     ]);
 }
 
-// Función para procesar comparación ID Beneficiario con Título
+// Función para procesar comparación ID Beneficiario con Título - CORREGIDA
 function procesarComparacionIdTitulo($conn_ic) {
     try {
-        // Consulta para obtener incidentes con IDs en el título
+        // Consulta para obtener incidentes con IDs en el título y sus reportes
         $sql = "SELECT 
                     i.`ID de incidente` as id_incidente,
                     i.Título as titulo,
@@ -237,19 +237,19 @@ function procesarComparacionIdTitulo($conn_ic) {
         $stmt = $conn_ic->prepare($sql);
         $stmt->execute();
         $result = $stmt->get_result();
-        $incidentes = [];
+        $registros = [];
         
         while ($row = $result->fetch_assoc()) {
-            $incidentes[] = $row;
+            $registros[] = $row;
         }
         $stmt->close();
         
         $resultados = [];
         
-        foreach ($incidentes as $incidente) {
-            $titulo = $incidente['titulo'];
-            $id_beneficiario = $incidente['sem_id_beneficiario'];
-            $id_incidente = $incidente['id_incidente'];
+        foreach ($registros as $registro) {
+            $titulo = $registro['titulo'];
+            $id_beneficiario = $registro['sem_id_beneficiario'];
+            $id_incidente = $registro['id_incidente'];
             
             // Extraer SOLO el primer ID del título después de "ID BENEFICIARIO:"
             $primer_id_en_titulo = extraerPrimerIdDeTitulo($titulo);
@@ -286,25 +286,23 @@ function procesarComparacionIdTitulo($conn_ic) {
 
 // Función para extraer SOLO el primer ID del título
 function extraerPrimerIdDeTitulo($titulo) {
-    // Buscar el patrón "ID BENEFICIARIO: número" y capturar solo el primer número
-    if (preg_match('/ID BENEFICIARIO:\s*(\d+)/i', $titulo, $matches)) {
-        return $matches[1]; // Retorna solo el primer ID encontrado
+    // Buscar el patrón "ID BENEFICIARIO: número" y capturar solo el primer número (antes de cualquier guión o espacio)
+    if (preg_match('/ID BENEFICIARIO:\s*([0-9]+)/i', $titulo, $matches)) {
+        return $matches[1]; // Retorna solo el primer ID encontrado (antes del primer guión)
     }
     return null;
 }
 
-// Función para procesar IDs en descripción no encontrados
+// Función para procesar IDs en descripción no encontrados - CORREGIDA
 function procesarIdsDescripcionNoEncontrados($conn_ic) {
     try {
-        // Consulta usando la columna Descripción - Tabla Base Ultima Milla
+        // Consulta usando la columna Descripción
         $sql = "SELECT 
                     `ID de incidente`,
                     `Descripción`
                 FROM incidentes 
                 WHERE (`Descripción` LIKE '%ID BENEFICIARIO:%')
                 AND `Descripción` IS NOT NULL
-                AND `Prioridad` = '1 - Crítica'
-                AND `Prioridad` = '2 - Alta'
                 ORDER BY `Inicio de la interrupción de servicio` DESC";
                 
         $stmt = $conn_ic->prepare($sql);
